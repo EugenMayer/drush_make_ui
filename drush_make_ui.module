@@ -1,0 +1,3 @@
+<?php
+
+include_once('drush_make_ui.features.inc');
