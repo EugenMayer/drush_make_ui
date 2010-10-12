@@ -1,0 +1,33 @@
+h1. Purpose
+
+This project aims to let you create a drush make file using a UI. The primary goal is not having a UI only but rather saving all the data strucutred for later uses.
+That means, that every make file is a node, every module is a part of a CCK field, which seperates the data of a module into 4 fields (server_key, short_name, api_revision, revision).
+
+The UI yet provides you the autocompletition of modules and available apis. It also fetches the available releases which you can chose to use them in your make file.
+No typos, search or whatever anymore. This data is fetched using the "update_feed_api":http://github.com/EugenMayer/update_feed_api
+You can also add custom make file options using the custom field which are then tailed to the make file. So you are free!
+
+This module is build ontop of nodes and utilizes views to actually evaluate the make files. This module is a feature.
+
+E.g. the shipped view (just a default view) makes it possible to search for the make files, search for make files which include *specific modules or even modules of a specific version*.
+
+That is just the start, in the end this module gives you a new *structured* entity "Make file". Build your own applications on top, utilizing the new gathered informations.
+
+h1. Installation
+
+# Install the module and its dependencies (feature, views..)
+## You have to install the "update_feed_api":http://github.com/EugenMayer/update_feed_api and the "update_feed_cck":http://github.com/EugenMayer/update_feed_api field
+## You also need the patche version of "autocomplete_element":http://github.com/EugenMayer/autocomplete_element
+# Activate the feature
+# You have to configure
+
+h1. Usage
+# Configure the "update_feed_api":http://github.com/EugenMayer/update_feed_api module (set the servers you want to fetch modules from). Check the installation guide there
+## Fetch projects (you dont need to fetch the releases yet, this will be done automatically on demand)
+# Create a new node "Drush make file"
+## Add modules, set the API Version and a short description of the make file for your notes if need
+# Click on "drush make files" and use the view to search through the make files
+# Click on a make file to see what modules are included
+
+h1. Todo
+# Generate a make file using Views and a template
