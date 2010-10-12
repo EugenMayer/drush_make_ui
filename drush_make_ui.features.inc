@@ -29,3 +29,12 @@ function drush_make_ui_node_info() {
   );
   return $items;
 }
+
+/**
+ * Implementation of hook_views_api().
+ */
+function drush_make_ui_views_api() {
+  return array(
+    'api' => '2',
+  );
+}
