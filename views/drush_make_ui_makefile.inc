@@ -1,8 +1,11 @@
 <?php
+// $Id$
 
+// Copyright (c) 2010 KontextWork
+// Author: Eugen Mayer, Views Bonus Author
 class drush_make_ui_makefile extends drush_make_ui_export {
-  var $feed_text = 'XML';
-  var $feed_file = 'view-%view.xml';
+  var $feed_text = 'MAKE';
+  var $feed_file = 'view-%view.make';
 
   /**
    * Initialize plugin.

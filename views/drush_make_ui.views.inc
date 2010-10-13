@@ -1,5 +1,8 @@
 <?php
+// $Id$
 
+// Copyright (c) 2010 KontextWork
+// Author: Eugen Mayer, Views Bonus Author
 function drush_make_ui_views_plugins() {
   $path = drupal_get_path('module', 'drush_make_ui');
   return array(
@@ -24,9 +27,7 @@ function drush_make_ui_views_plugins() {
         'uses fields' => TRUE,
         'uses options' => TRUE,
         'type' => 'feed',
-        // Views Bonus Export element that will be used to set additional headers when serving the feed.
         'export headers' => array('Content-type: text/make; charset=utf-8'),
-        // Views Bonus Export element mostly used for creating some additional classes and template names.
         'export feed type' => 'make',
       ),
     ),

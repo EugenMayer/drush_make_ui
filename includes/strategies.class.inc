@@ -1,4 +1,8 @@
 <?php 
+// $Id$
+
+// Copyright (c) 2010 KontextWork
+// Author: Eugen Mayer
 
 class Drush_make_release_generic{
   protected $release = NULL;

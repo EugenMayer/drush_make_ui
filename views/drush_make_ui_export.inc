@@ -1,5 +1,8 @@
 <?php
 // $Id$
+
+// Copyright (c) 2010 KontextWork
+// Author: Eugen Mayer, Views Bonus Author
 /**
  * @file
  * Plugin include file for export style plugin.

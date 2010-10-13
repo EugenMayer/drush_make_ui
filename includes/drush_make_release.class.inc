@@ -1,4 +1,8 @@
-<?php 
+<?php
+// $Id$
+
+// Copyright (c) 2010 KontextWork
+// Author: Eugen Mayer
 class Drush_make_release{
   protected $release = NULL;
   protected $strategy = NULL;

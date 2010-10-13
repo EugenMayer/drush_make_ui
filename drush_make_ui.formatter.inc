@@ -1,5 +1,8 @@
 <?php 
+// $Id$
 
+// Copyright (c) 2010 KontextWork
+// Author: Eugen Mayer
 function drush_make_ui_makefile($element) {
   $result = '';
   foreach(element_children($element) as $key) {

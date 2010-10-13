@@ -1,5 +1,8 @@
 <?php
+// $Id$
 
+// Copyright (c) 2010 KontextWork
+// Author: Eugen Mayer
 include_once('drush_make_ui.features.inc');
 include_once 'views/drush_make_ui.views.inc';
 
