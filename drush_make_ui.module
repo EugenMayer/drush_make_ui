@@ -1,3 +1,86 @@
 <?php
 
 include_once('drush_make_ui.features.inc');
+include_once 'views/drush_make_ui.views.inc';
+
+function drush_make_ui_field_formatter_info() {
+  return array(
+    'makefile' => array(
+      'label' => t('Makefile'),
+      'field types' => array('update_feed_cck'),
+      'multiple values' => CONTENT_HANDLE_MODULE,
+      'description' => t('Displays modules in a table with the shortname, server, api and version'),
+    ),
+    'drush_make_api' => array(
+      'label' => t('Drush make API (for makefile)'),
+      'field types' => array('text'),
+      'multiple values' => CONTENT_HANDLE_CORE,
+      'description' => t('Displays modules in a table with the shortname, server, api and version'),
+    ),
+    'core_api' => array(
+      'label' => t('Core API (for makefile)'),
+      'field types' => array('text'),
+      'multiple values' => CONTENT_HANDLE_CORE,
+      'description' => t('Displays modules in a table with the shortname, server, api and version'),
+    ),    
+  );
+}
+
+function drush_make_ui_theme() {
+  return array(
+    'drush_make_ui_formatter_makefile' => array(
+      'arguments' => array('element' => NULL),
+      'function' => 'drush_make_ui_makefile',
+      'file' => 'drush_make_ui.formatter.inc',
+    ),
+    'drush_make_ui_formatter_drush_make_api' => array(
+      'arguments' => array('element' => NULL),
+      'file' => 'drush_make_ui.formatter.inc',
+    ),
+    'drush_make_ui_formatter_core_api' => array(
+      'arguments' => array('element' => NULL),
+      'file' => 'drush_make_ui.formatter.inc',
+    ),
+  );
+}
+
+
+function drush_make_ui_autoload_info() {
+  $path = drupal_get_path('module','drush_make_ui').'/includes/';
+  return array(
+    'Drush_make_release' => array(
+      'file' => 'drush_make_release.class.inc',
+      'file path' => $path,
+    ),
+    'Drush_make_release_generic' => array(
+      'file' => 'strategies.class.inc',
+      'file path' => $path,
+    ),
+  );
+}
+
+function drush_make_ui_link($type, &$node) {
+  switch($node->type) {
+    case 'drush_make_file':
+      $src = drupal_get_path('module','drush_make_ui').'/images/make-icon.png';
+      return array(
+        'make_file_dl' => array(
+          'title' => "<img class='download_make_file' src='/$src'>".t('Generate and download drush make file'),
+          'href' => 'drush_make_ui/generate/'.$node->nid,
+          'query' => array(
+            'filename' => str_replace(' ','_',check_plain($node->title)).'.make',
+          ),  
+          'html' => TRUE
+        )
+      );
+    break;
+  }
+}
+
+function drush_make_ui_nodeapi(&$node, $op, $a3, $a4) {
+  switch($op) {
+    case 'view':
+      ctools_add_css('drush_make_ui','drush_make_ui');
+    break;
+  }
+}
