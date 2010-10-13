@@ -31,7 +31,7 @@ foreach($view->style_plugin->rendered_fields as $row) {
     else if($key == 'field_drush_make_api_value') {
       $api_printed = TRUE;
     }
-    echo "$field\n";
+    echo "$field";
   }
 }
 ?>

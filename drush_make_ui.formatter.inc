@@ -19,9 +19,9 @@ function drush_make_ui_makefile($element) {
 }
 
 function theme_drush_make_ui_formatter_drush_make_api($element) {
-  return 'api='.$element['#item']['safe'];
+  return 'api='.$element['#item']['safe']."\n";
 }
 
 function theme_drush_make_ui_formatter_core_api($element) {
-  return 'core='.$element['#item']['safe'];
+  return 'core='.$element['#item']['safe']."\n";
 }
