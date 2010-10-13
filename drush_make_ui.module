@@ -1,6 +1,7 @@
 <?php
 
 include_once('drush_make_ui.features.inc');
+include_once 'views/drush_make_ui.views.inc';
 
 function drush_make_ui_field_formatter_info() {
   return array(    
@@ -56,8 +57,4 @@ function drush_make_ui_autoload_info() {
       'file path' => $path,
     ),
   );
-}
-
-function drush_make_ui_preprocess_views_view__drush_make_file_generator(&$vars) {
-  dsm($vars);
 }
