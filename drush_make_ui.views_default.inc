@@ -180,13 +180,117 @@ function drush_make_ui_views_default_views() {
       'relationship' => 'none',
     ),
   ));
+  $handler->override_option('arguments', array(
+    'nid' => array(
+      'default_action' => 'not found',
+      'style_plugin' => 'default_summary',
+      'style_options' => array(),
+      'wildcard' => 'all',
+      'wildcard_substitution' => 'All',
+      'title' => '',
+      'breadcrumb' => '',
+      'default_argument_type' => 'fixed',
+      'default_argument' => '',
+      'validate_type' => 'node',
+      'validate_fail' => 'not found',
+      'break_phrase' => 0,
+      'not' => 0,
+      'id' => 'nid',
+      'table' => 'node',
+      'field' => 'nid',
+      'validate_user_argument_type' => 'uid',
+      'validate_user_roles' => array(
+        '2' => 0,
+      ),
+      'override' => array(
+        'button' => 'Override',
+      ),
+      'relationship' => 'none',
+      'default_options_div_prefix' => '',
+      'default_argument_fixed' => '',
+      'default_argument_user' => 0,
+      'default_argument_php' => '',
+      'validate_argument_node_type' => array(
+        'drush_make_file' => 0,
+        'fserver_distro' => 0,
+        'fserver_project' => 0,
+        'fserver_release' => 0,
+      ),
+      'validate_argument_node_access' => 1,
+      'validate_argument_nid_type' => 'nid',
+      'validate_argument_vocabulary' => array(),
+      'validate_argument_type' => 'tid',
+      'validate_argument_transform' => 0,
+      'validate_user_restrict_roles' => 0,
+      'validate_argument_php' => '',
+    ),
+  ));
+  $handler->override_option('filters', array(
+    'nid' => array(
+      'operator' => '=',
+      'value' => array(
+        'value' => '',
+        'min' => '',
+        'max' => '',
+      ),
+      'group' => '0',
+      'exposed' => TRUE,
+      'expose' => array(
+        'use_operator' => 0,
+        'operator' => 'nid_op',
+        'identifier' => 'nid',
+        'label' => 'node',
+        'optional' => 1,
+        'remember' => 0,
+      ),
+      'id' => 'nid',
+      'table' => 'node',
+      'field' => 'nid',
+      'override' => array(
+        'button' => 'Override',
+      ),
+      'relationship' => 'none',
+    ),
+  ));
   $handler->override_option('access', array(
     'type' => 'none',
   ));
   $handler->override_option('cache', array(
     'type' => 'none',
   ));
-  $handler = $view->new_display('page', 'Page', 'page_1');
+  $handler->override_option('title', 'Drush make file');
+  $handler->override_option('style_plugin', 'table');
+  $handler->override_option('style_options', array(
+    'grouping' => '',
+    'override' => 1,
+    'sticky' => 0,
+    'order' => 'asc',
+    'columns' => array(
+      'field_drush_make_api_value' => 'field_drush_make_api_value',
+      'field_core_version_value' => 'field_core_version_value',
+      'field_module_title' => 'field_module_title',
+      'field_custom_value' => 'field_custom_value',
+    ),
+    'info' => array(
+      'field_drush_make_api_value' => array(
+        'sortable' => 0,
+        'separator' => '',
+      ),
+      'field_core_version_value' => array(
+        'sortable' => 0,
+        'separator' => '',
+      ),
+      'field_module_title' => array(
+        'separator' => '',
+      ),
+      'field_custom_value' => array(
+        'sortable' => 0,
+        'separator' => '',
+      ),
+    ),
+    'default' => '-1',
+  ));
+  $handler = $view->new_display('page', 'Drush make file', 'page_1');
   $handler->override_option('path', 'drush_makefile');
   $handler->override_option('menu', array(
     'type' => 'normal',
@@ -202,6 +306,37 @@ function drush_make_ui_views_default_views() {
     'weight' => 0,
     'name' => 'navigation',
   ));
+  $handler = $view->new_display('feed', 'Feed', 'feed_1');
+  $handler->override_option('style_plugin', 'drush_make_ui_makefile');
+  $handler->override_option('style_options', array(
+    'mission_description' => FALSE,
+    'description' => '',
+    'attach_text' => 'Download makefile',
+    'provide_file' => 1,
+    'filename' => 'view-%view.make',
+    'parent_sort' => 0,
+  ));
+  $handler->override_option('row_plugin', '');
+  $handler->override_option('path', 'drush_make_ui/generate');
+  $handler->override_option('menu', array(
+    'type' => 'none',
+    'title' => '',
+    'description' => '',
+    'weight' => 0,
+    'name' => 'navigation',
+  ));
+  $handler->override_option('tab_options', array(
+    'type' => 'none',
+    'title' => '',
+    'description' => '',
+    'weight' => 0,
+    'name' => 'navigation',
+  ));
+  $handler->override_option('displays', array(
+    'page_1' => 'page_1',
+    'default' => 0,
+  ));
+  $handler->override_option('sitename_title', FALSE);
 
   $views[$view->name] = $view;
 
@@ -417,6 +552,25 @@ function drush_make_ui_views_default_views() {
       'field' => 'field_module_short_name',
       'relationship' => 'none',
     ),
+    'field_module_server_key' => array(
+      'operator' => '=',
+      'value' => '',
+      'group' => '0',
+      'exposed' => TRUE,
+      'expose' => array(
+        'use_operator' => FALSE,
+        'operator' => 'field_module_server_key_op',
+        'identifier' => 'field_module_server_key',
+        'label' => 'Content: Modules (field_module) - server_key',
+        'remember' => FALSE,
+        'single' => TRUE,
+        'optional' => TRUE,
+      ),
+      'case' => TRUE,
+      'id' => 'field_module_server_key',
+      'table' => 'node_data_field_module',
+      'field' => 'field_module_server_key',
+    ),
   ));
   $handler->override_option('access', array(
     'type' => 'role',
@@ -447,6 +601,62 @@ function drush_make_ui_views_default_views() {
     'default' => '-1',
   ));
   $handler = $view->new_display('page', 'Drush make files', 'page_1');
+  $handler->override_option('filters', array(
+    'type' => array(
+      'operator' => 'in',
+      'value' => array(
+        'drush_make_file' => 'drush_make_file',
+      ),
+      'group' => '0',
+      'exposed' => FALSE,
+      'expose' => array(
+        'operator' => FALSE,
+        'label' => '',
+      ),
+      'id' => 'type',
+      'table' => 'node',
+      'field' => 'type',
+      'relationship' => 'none',
+    ),
+    'title' => array(
+      'operator' => 'contains',
+      'value' => '',
+      'group' => '0',
+      'exposed' => TRUE,
+      'expose' => array(
+        'use_operator' => 0,
+        'operator' => 'title_op',
+        'identifier' => 'Search',
+        'label' => 'Search',
+        'optional' => 1,
+        'remember' => 0,
+      ),
+      'case' => 1,
+      'id' => 'title',
+      'table' => 'node',
+      'field' => 'title',
+      'relationship' => 'none',
+    ),
+    'field_module_short_name' => array(
+      'operator' => 'contains',
+      'value' => '',
+      'group' => '0',
+      'exposed' => TRUE,
+      'expose' => array(
+        'use_operator' => 0,
+        'operator' => 'field_module_short_name_op',
+        'identifier' => 'field_module_short_name',
+        'label' => 'Includes module',
+        'optional' => 1,
+        'remember' => 0,
+      ),
+      'case' => 1,
+      'id' => 'field_module_short_name',
+      'table' => 'node_data_field_module',
+      'field' => 'field_module_short_name',
+      'relationship' => 'none',
+    ),
+  ));
   $handler->override_option('path', 'drush_make_files');
   $handler->override_option('menu', array(
     'type' => 'normal',
@@ -462,6 +672,162 @@ function drush_make_ui_views_default_views() {
     'weight' => 0,
     'name' => 'navigation',
   ));
+  $handler = $view->new_display('feed', 'Feed', 'feed_1');
+  $handler->override_option('fields', array(
+    'field_core_version_value' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'link_to_node' => 0,
+      'label_type' => 'none',
+      'format' => 'core_api',
+      'multiple' => array(
+        'group' => TRUE,
+        'multiple_number' => '',
+        'multiple_from' => '',
+        'multiple_reversed' => FALSE,
+      ),
+      'exclude' => 0,
+      'id' => 'field_core_version_value',
+      'table' => 'node_data_field_core_version',
+      'field' => 'field_core_version_value',
+      'relationship' => 'none',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+    ),
+    'field_drush_make_api_value' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'link_to_node' => 0,
+      'label_type' => 'none',
+      'format' => 'drush_make_api',
+      'multiple' => array(
+        'group' => TRUE,
+        'multiple_number' => '',
+        'multiple_from' => '',
+        'multiple_reversed' => FALSE,
+      ),
+      'exclude' => 0,
+      'id' => 'field_drush_make_api_value',
+      'table' => 'node_data_field_drush_make_api',
+      'field' => 'field_drush_make_api_value',
+      'relationship' => 'none',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+    ),
+    'field_module_title' => array(
+      'label' => '',
+      'alter' => array(
+        'alter_text' => 0,
+        'text' => '',
+        'make_link' => 0,
+        'path' => '',
+        'link_class' => '',
+        'alt' => '',
+        'prefix' => '',
+        'suffix' => '',
+        'target' => '',
+        'help' => '',
+        'trim' => 0,
+        'max_length' => '',
+        'word_boundary' => 1,
+        'ellipsis' => 1,
+        'html' => 0,
+        'strip_tags' => 0,
+      ),
+      'empty' => '',
+      'hide_empty' => 0,
+      'empty_zero' => 0,
+      'link_to_node' => 0,
+      'label_type' => 'none',
+      'format' => 'makefile',
+      'multiple' => array(
+        'group' => 1,
+        'multiple_number' => '3',
+        'multiple_from' => '',
+        'multiple_reversed' => 0,
+      ),
+      'exclude' => 0,
+      'id' => 'field_module_title',
+      'table' => 'node_data_field_module',
+      'field' => 'field_module_title',
+      'relationship' => 'none',
+      'override' => array(
+        'button' => 'Use default',
+      ),
+    ),
+  ));
+  $handler->override_option('style_plugin', 'drush_make_ui_makefile');
+  $handler->override_option('style_options', array(
+    'mission_description' => FALSE,
+    'description' => '',
+    'attach_text' => 'Download makefile. The makefile is generated out of all current makefiles!',
+    'provide_file' => 1,
+    'filename' => 'view-%view.make',
+    'parent_sort' => 0,
+  ));
+  $handler->override_option('row_plugin', '');
+  $handler->override_option('path', 'drush_make_ui/generatecurrent');
+  $handler->override_option('menu', array(
+    'type' => 'none',
+    'title' => '',
+    'description' => '',
+    'weight' => 0,
+    'name' => 'navigation',
+  ));
+  $handler->override_option('tab_options', array(
+    'type' => 'none',
+    'title' => '',
+    'description' => '',
+    'weight' => 0,
+    'name' => 'navigation',
+  ));
+  $handler->override_option('displays', array(
+    'page_1' => 'page_1',
+    'default' => 0,
+  ));
+  $handler->override_option('sitename_title', FALSE);
 
   $views[$view->name] = $view;
 
