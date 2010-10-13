@@ -1,3 +1,63 @@
 <?php
 
 include_once('drush_make_ui.features.inc');
+
+function drush_make_ui_field_formatter_info() {
+  return array(    
+    'makefile' => array(
+      'label' => t('Makefile'),
+      'field types' => array('update_feed_cck'),
+      'multiple values' => CONTENT_HANDLE_MODULE,
+      'description' => t('Displays modules in a table with the shortname, server, api and version'),
+    ),
+    'drush_make_api' => array(
+      'label' => t('Drush make API (for makefile)'),
+      'field types' => array('text'),
+      'multiple values' => CONTENT_HANDLE_CORE,
+      'description' => t('Displays modules in a table with the shortname, server, api and version'),
+    ),
+    'core_api' => array(
+      'label' => t('Core API (for makefile)'),
+      'field types' => array('text'),
+      'multiple values' => CONTENT_HANDLE_CORE,
+      'description' => t('Displays modules in a table with the shortname, server, api and version'),
+    ),    
+  );
+}
+
+function drush_make_ui_theme() {
+  return array(
+    'drush_make_ui_formatter_makefile' => array(
+      'arguments' => array('element' => NULL),
+      'function' => 'drush_make_ui_makefile',
+      'file' => 'drush_make_ui.formatter.inc',
+    ),
+    'drush_make_ui_formatter_drush_make_api' => array(
+      'arguments' => array('element' => NULL),
+      'file' => 'drush_make_ui.formatter.inc',
+    ),
+    'drush_make_ui_formatter_core_api' => array(
+      'arguments' => array('element' => NULL),
+      'file' => 'drush_make_ui.formatter.inc',
+    ),
+  );
+}
+
+
+function drush_make_ui_autoload_info() {
+  $path = drupal_get_path('module','drush_make_ui').'/includes/';
+  return array(
+    'Drush_make_release' => array(
+      'file' => 'drush_make_release.class.inc',
+      'file path' => $path,
+    ),
+    'Drush_make_release_generic' => array(
+      'file' => 'strategies.class.inc',
+      'file path' => $path,
+    ),
+  );
+}
+
+function drush_make_ui_preprocess_views_view__drush_make_file_generator(&$vars) {
+  dsm($vars);
+}
