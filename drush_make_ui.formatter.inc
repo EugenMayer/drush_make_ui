@@ -13,7 +13,7 @@ function drush_make_ui_makefile($element) {
     $release = $project->get_release_by_version($version);
     // thats our helper handling the conversion from release to something the drush make files wants ( a string )
     $drush_make_release = new Drush_make_release($release, array('set_download' => FALSE, 'set_version' => TRUE));
-    $result .= $drush_make_release->__toString()."\n\r";
+    $result .= $drush_make_release->__toString()."\n\n";
   }
   return $result;
 }

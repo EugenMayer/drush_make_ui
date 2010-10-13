@@ -11,7 +11,6 @@
  * @ingroup views_style_plugins
  */
 class drush_make_ui_export extends views_plugin_style {
-
   /**
    * Set options fields and default values.
    *
@@ -88,28 +87,27 @@ class drush_make_ui_export extends views_plugin_style {
    * feed image link.
    */
   function attach_to($display_id, $path, $title) {
-
     $type = $this->definition['export feed type'];
-    $theme_pattern = array(
-      'views_bonus_export_feed_icon__' . $this->view->name . '__' . $display_id . '__' . $type,
-      'views_bonus_export_feed_icon__' . $this->view->name . '__' . $display_id,
-      'views_bonus_export_feed_icon__' . $this->view->name . '__' . $type,
-      'views_bonus_export_feed_icon__' . $display_id . '__' . $type,
-      'views_bonus_export_feed_icon__' . $display_id,
-      'views_bonus_export_feed_icon__' . $type,
-      'views_bonus_export_feed_icon',
-    );
     $query = $this->view->get_exposed_input();
     // Stash the display id we're coming form in the url so we can hijack it later.
     if ($this->options['parent_sort']) {
       $query['attach'] = $display_id;
     }
-    $this->view->feed_icon .= theme($theme_pattern,
+    //$this->view->get_url(NULL, $path)
+    $image = theme('image',
       $this->feed_image,
-      $this->view->get_url(NULL, $path),
-      $query,
+      $this->options['attach_text'],
       $this->options['attach_text']
     );
+    $options = array(
+      'html' => TRUE,
+    );
+    if(count($query) > 0) {
+      $options['query'] = $query;
+    }
+    
+    $link = l($image,$this->view->get_url(NULL, $path), $options);
+    $this->view->feed_icon .= $link;
   }
 
   function build_sort() {

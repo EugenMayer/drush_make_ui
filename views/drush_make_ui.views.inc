@@ -15,6 +15,7 @@ function drush_make_ui_views_plugins() {
         'title' => t('Drush makefile'),
         'help' => t('Create a downloadable drush make file'),
         'path' => "$path/views",
+        'theme path' => "$path/views",
         'handler' => 'drush_make_ui_makefile',
         'parent' => 'drush_make_ui_export',
         'theme' => 'drush_make_ui_makefile',
@@ -32,11 +33,16 @@ function drush_make_ui_views_plugins() {
   );
 }
 
+/**
+ * Theme preprocess for theme('fserver_updatexml')
+ */
+function template_preprocess_drush_make_ui_makefile(&$vars) {
+}
 
 /**
  * Implementation of hook_views_post_render().
  */
-function drush_make_ui_export_views_post_render(&$view, &$output, &$cache) {
+function drush_make_ui_views_post_render(&$view, &$output, &$cache) {
   if (is_a($view->style_plugin, 'drush_make_ui_export')) {
     _drush_make_ui_export_add_headers($view);
   }
@@ -66,6 +72,9 @@ function _drush_make_ui_export_add_headers(&$view) {
       $style->options['filename'],
       array('%view' => check_plain($view->name))
     );
+    if(!empty($_GET['filename'])) {
+      $filename = $_GET['filename'];
+    }
 
     if ($filename) {
       drupal_set_header('Content-Disposition: attachment; filename="'. $filename .'"');

@@ -11,6 +11,6 @@ class drush_make_ui_makefile extends drush_make_ui_export {
    */
   function init(&$view, &$display, $options = NULL) {
     parent::init($view, $display, $options = NULL);
-    $this->feed_image = drupal_get_path('module', 'drush_make_ui') . '/images/xml.png';
+    $this->feed_image = drupal_get_path('module', 'drush_make_ui') . '/images/make-icon.png';
   }
 }
