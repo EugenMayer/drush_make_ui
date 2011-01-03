@@ -75,7 +75,7 @@ class Drush_make_release_generic{
    $major = $minor = $extra = NULL;
    try {
      $major = $this->release->get_info('version_major');  
-     $minor = $this->release->get_info('version_minor');
+     $patch = $this->release->get_info('version_patch');
      $extra = $this->release->get_info('version_extra');
    }
    catch(Exception $e) {     
@@ -83,8 +83,8 @@ class Drush_make_release_generic{
    
    $options['version'] = $major;
    
-   if(!empty($minor)) {
-     $options['version'] .= ".$minor";
+   if($patch != '') {
+     $options['version'] .= ".$patch";
    }
    else {
      $options['version'] .= ".x";

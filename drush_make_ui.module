@@ -47,7 +47,6 @@ function drush_make_ui_theme() {
   );
 }
 
-
 function drush_make_ui_autoload_info() {
   $path = drupal_get_path('module','drush_make_ui').'/includes/';
   return array(
@@ -87,4 +86,3 @@ function drush_make_ui_nodeapi(&$node, $op, $a3, $a4) {
     break;
   }
 }
-

@@ -31,18 +31,10 @@ function drush_make_ui_fieldgroup_default_groups() {
           'format' => 'fieldset',
           'exclude' => 0,
         ),
-        '2' => array(
-          'format' => 'fieldset',
-          'exclude' => 0,
-        ),
-        '3' => array(
-          'format' => 'fieldset',
-          'exclude' => 0,
-        ),
         'label' => 'above',
       ),
     ),
-    'weight' => '11',
+    'weight' => '10',
     'fields' => array(
       '0' => 'field_core_version',
       '1' => 'field_drush_make_api',

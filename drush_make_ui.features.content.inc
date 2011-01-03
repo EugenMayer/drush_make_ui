@@ -6,14 +6,76 @@
 function drush_make_ui_content_default_fields() {
   $fields = array();
 
+  // Exported field: field_components
+  $fields['drush_make_file-field_components'] = array(
+    'field_name' => 'field_components',
+    'type_name' => 'drush_make_file',
+    'display_settings' => array(
+      'weight' => '12',
+      'parent' => '',
+      'label' => array(
+        'format' => 'above',
+      ),
+      'teaser' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+      'full' => array(
+        'format' => 'component_table',
+        'exclude' => 0,
+      ),
+      '4' => array(
+        'format' => 'default',
+        'exclude' => 0,
+      ),
+    ),
+    'widget_active' => '1',
+    'type' => 'nodereference',
+    'required' => '0',
+    'multiple' => '1',
+    'module' => 'nodereference',
+    'active' => '1',
+    'referenceable_types' => array(
+      'component' => 'component',
+      'client' => 0,
+      'fserver_distro' => 0,
+      'drush_make_file' => 0,
+      'package' => 0,
+      'platform' => 0,
+      'fserver_project' => 0,
+      'fserver_release' => 0,
+      'server' => 0,
+      'site' => 0,
+      'task' => 0,
+    ),
+    'advanced_view' => '--',
+    'advanced_view_args' => '',
+    'widget' => array(
+      'autocomplete_match' => 'contains',
+      'size' => '60',
+      'default_value' => array(
+        '0' => array(
+          'nid' => NULL,
+        ),
+      ),
+      'default_value_php' => NULL,
+      'label' => 'Components',
+      'weight' => '13',
+      'description' => '',
+      'type' => 'nodereference_autocomplete',
+      'module' => 'nodereference',
+    ),
+  );
+
   // Exported field: field_core_version
   $fields['drush_make_file-field_core_version'] = array(
     'field_name' => 'field_core_version',
     'type_name' => 'drush_make_file',
     'display_settings' => array(
+      'weight' => '10',
+      'parent' => 'group_extras',
       'label' => array(
         'format' => 'above',
-        'exclude' => 0,
       ),
       'teaser' => array(
         'format' => 'default',
@@ -69,9 +131,10 @@ function drush_make_ui_content_default_fields() {
     'field_name' => 'field_custom',
     'type_name' => 'drush_make_file',
     'display_settings' => array(
+      'weight' => '12',
+      'parent' => 'group_extras',
       'label' => array(
         'format' => 'above',
-        'exclude' => 0,
       ),
       'teaser' => array(
         'format' => 'default',
@@ -128,9 +191,10 @@ The content of this file will plainly be tailed to the end of the generated make
     'field_name' => 'field_drush_make_api',
     'type_name' => 'drush_make_file',
     'display_settings' => array(
+      'weight' => '11',
+      'parent' => 'group_extras',
       'label' => array(
         'format' => 'above',
-        'exclude' => 0,
       ),
       'teaser' => array(
         'format' => 'default',
@@ -184,10 +248,10 @@ The content of this file will plainly be tailed to the end of the generated make
     'field_name' => 'field_module',
     'type_name' => 'drush_make_file',
     'display_settings' => array(
-      'weight' => '31',
+      'weight' => '13',
       'parent' => '',
       'label' => array(
-        'format' => 'hidden',
+        'format' => 'above',
       ),
       'teaser' => array(
         'format' => 'short_name',
@@ -227,8 +291,8 @@ The content of this file will plainly be tailed to the end of the generated make
         ),
       ),
       'default_value_php' => NULL,
-      'label' => 'Modules',
-      'weight' => '13',
+      'label' => 'Packages',
+      'weight' => '12',
       'description' => '',
       'type' => 'update_feed_cck_widget',
       'module' => 'update_feed_cck',
@@ -237,10 +301,11 @@ The content of this file will plainly be tailed to the end of the generated make
 
   // Translatables
   // Included for use with string extractors like potx.
+  t('Components');
   t('Core');
   t('Custom settings');
   t('Drush make API');
-  t('Modules');
+  t('Packages');
 
   return $fields;
 }

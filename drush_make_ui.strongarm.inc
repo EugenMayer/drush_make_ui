@@ -74,13 +74,11 @@ function drush_make_ui_strongarm() {
   $strongarm->name = 'content_extra_weights_drush_make_file';
   $strongarm->value = array(
     'title' => '9',
-    'body_field' => '12',
+    'body_field' => '11',
     'revision_information' => '14',
     'author' => '15',
     'options' => '16',
-    'comment_settings' => '18',
-    'menu' => '19',
-    'path' => '17',
+    'menu' => '17',
   );
 
   $export['content_extra_weights_drush_make_file'] = $strongarm;
