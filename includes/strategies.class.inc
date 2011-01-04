@@ -49,7 +49,7 @@ class Drush_make_release_generic{
         $result .= $this->array_to_string($value, '');
       } 
       else {
-        $result .= "=$value";  
+        $result .= "=\"$value\"";  
       }
       $result .= "\n";
     }
