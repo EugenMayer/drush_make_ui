@@ -239,12 +239,10 @@ The content of this file will plainly be tailed to the end of the generated make
 
   // Translatables
   // Included for use with string extractors like potx.
-  t('Components');
   t('Core');
   t('Custom settings');
   t('Drush make API');
   t('Packages');
-  t('Platform');
 
   return $fields;
 }
