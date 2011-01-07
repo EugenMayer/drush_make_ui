@@ -5,6 +5,7 @@
  */
 function drush_make_ui_content_default_fields() {
   $fields = array();
+
   // Exported field: field_core_version
   $fields['drush_make_file-field_core_version'] = array(
     'field_name' => 'field_core_version',
