@@ -18,14 +18,14 @@ function drush_make_ui_fieldgroup_default_groups() {
         'description' => '',
       ),
       'display' => array(
-        'weight' => '10',
+        'weight' => '7',
         'label' => 'above',
         'teaser' => array(
-          'format' => 'fieldset',
+          'format' => 'hidden',
           'exclude' => 0,
         ),
         'full' => array(
-          'format' => 'fieldset',
+          'format' => 'fieldset_collapsed',
           'exclude' => 0,
         ),
         'description' => '',
@@ -55,20 +55,21 @@ function drush_make_ui_fieldgroup_default_groups() {
         'description' => '',
       ),
       'display' => array(
-        'description' => '',
+        'weight' => '8',
+        'label' => 'above',
         'teaser' => array(
-          'format' => 'fieldset',
+          'format' => 'hidden',
           'exclude' => 0,
         ),
         'full' => array(
           'format' => 'fieldset',
           'exclude' => 0,
         ),
+        'description' => '',
         '4' => array(
           'format' => 'fieldset',
           'exclude' => 0,
         ),
-        'label' => 'above',
       ),
     ),
     'weight' => '8',

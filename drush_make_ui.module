@@ -67,8 +67,8 @@ function drush_make_ui_link($type, &$node) {
       $src = drupal_get_path('module','drush_make_ui').'/images/make-icon.png';
       return array(
         'make_file_dl' => array(
-          'title' => "<img class='download_make_file' src='/$src'>".t('Generate and download drush make file'),
-          'href' => 'drush_make_ui/generate/'.$node->nid,
+          'title' => "<img class='download_make_file' src='/$src'>".t('Download makefile'),
+          'href' => 'drush_make_ui/generate/'.$node->vid,
           'query' => array(
             'filename' => str_replace(' ','_',check_plain($node->title)).'.make',
           ),  

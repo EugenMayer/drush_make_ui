@@ -14,10 +14,10 @@ function drush_make_ui_content_default_fields() {
       'weight' => '10',
       'parent' => 'group_extras',
       'label' => array(
-        'format' => 'above',
+        'format' => 'inline',
       ),
       'teaser' => array(
-        'format' => 'default',
+        'format' => 'hidden',
         'exclude' => 0,
       ),
       'full' => array(
@@ -70,13 +70,13 @@ function drush_make_ui_content_default_fields() {
     'field_name' => 'field_custom',
     'type_name' => 'drush_make_file',
     'display_settings' => array(
-      'weight' => '12',
+      'weight' => '13',
       'parent' => 'group_extras',
       'label' => array(
-        'format' => 'above',
+        'format' => 'inline',
       ),
       'teaser' => array(
-        'format' => 'default',
+        'format' => 'hidden',
         'exclude' => 0,
       ),
       'full' => array(
@@ -130,13 +130,13 @@ The content of this file will plainly be tailed to the end of the generated make
     'field_name' => 'field_drush_make_api',
     'type_name' => 'drush_make_file',
     'display_settings' => array(
-      'weight' => '11',
+      'weight' => '12',
       'parent' => 'group_extras',
       'label' => array(
-        'format' => 'above',
+        'format' => 'inline',
       ),
       'teaser' => array(
-        'format' => 'default',
+        'format' => 'hidden',
         'exclude' => 0,
       ),
       'full' => array(
@@ -187,10 +187,10 @@ The content of this file will plainly be tailed to the end of the generated make
     'field_name' => 'field_module',
     'type_name' => 'drush_make_file',
     'display_settings' => array(
-      'weight' => '13',
-      'parent' => '',
+      'weight' => '6',
+      'parent' => 'group_packages',
       'label' => array(
-        'format' => 'above',
+        'format' => 'hidden',
       ),
       'teaser' => array(
         'format' => 'short_name',
