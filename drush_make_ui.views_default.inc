@@ -228,26 +228,6 @@ function drush_make_ui_views_default_views() {
       'validate_argument_php' => '',
     ),
   ));
-  $handler->override_option('filters', array(
-    'vid' => array(
-      'operator' => '=',
-      'value' => array(
-        'value' => '',
-        'min' => '',
-        'max' => '',
-      ),
-      'group' => '0',
-      'exposed' => FALSE,
-      'expose' => array(
-        'operator' => FALSE,
-        'label' => '',
-      ),
-      'id' => 'vid',
-      'table' => 'node_revisions',
-      'field' => 'vid',
-      'relationship' => 'none',
-    ),
-  ));
   $handler->override_option('access', array(
     'type' => 'none',
   ));

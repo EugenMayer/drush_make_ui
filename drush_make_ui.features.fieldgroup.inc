@@ -62,7 +62,7 @@ function drush_make_ui_fieldgroup_default_groups() {
           'exclude' => 0,
         ),
         'full' => array(
-          'format' => 'fieldset',
+          'format' => 'fieldset_collapsed',
           'exclude' => 0,
         ),
         'description' => '',
