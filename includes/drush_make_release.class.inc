@@ -25,8 +25,12 @@ class Drush_make_release{
     $type = $this->release->type();
     $class = "Drush_make_release_$type";
     if(!class_exists($class)) {
-      $class = "Drush_make_release_generic";
-      //throw new Exception("No strategy available for this release type ($type), as class $class does not exist or is not loadable");
+      if(empty($this->options['generic_class']) || !class_exists($this->options['generic_class'])) {
+        $class = "Drush_make_release_generic";      
+      }
+      else {
+        $class = $this->options['generic_class'];
+      }
     }
     $this->strategy = new $class($this->release, $this->options);
   }

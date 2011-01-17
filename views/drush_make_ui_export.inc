@@ -35,6 +35,10 @@ class drush_make_ui_export extends views_plugin_style {
       'default' => $this->feed_file,
       'translatable' => FALSE,
     );
+    $options['generic_class'] = array(
+      'default' => $this->feed_generic_class,
+      'translatable' => FALSE,
+    );
     $options['parent_sort'] = array(
       'default' => FALSE,
       'translatable' => FALSE,
@@ -70,6 +74,16 @@ class drush_make_ui_export extends views_plugin_style {
       '#title' => t('Filename'),
       '#default_value' => $this->options['filename'],
       '#description' => t('The filename that will be suggested to the browser for downloading purposes. %view will be replaced with the view name.'),
+      '#process' => array('views_process_dependency'),
+      '#dependency' => array(
+        'edit-style-options-provide-file' => array(TRUE),
+      ),
+    );
+    $form['generic_class'] = array(
+      '#type' => 'textfield',
+      '#title' => t('Generic class'),
+      '#default_value' => $this->options['generic_class'],
+      '#description' => t('What generic class to use when generating the make file. Leave empty to use the default class'),
       '#process' => array('views_process_dependency'),
       '#dependency' => array(
         'edit-style-options-provide-file' => array(TRUE),
@@ -114,7 +128,6 @@ class drush_make_ui_export extends views_plugin_style {
   }
 
   function build_sort() {
-
     // Bypass doing any sort of testing if parent sorting is disabled.
     if (!$this->options['parent_sort']) {
       return parent::build_sort();

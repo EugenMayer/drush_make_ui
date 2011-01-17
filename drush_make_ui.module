@@ -17,7 +17,7 @@ function drush_make_ui_field_formatter_info() {
     'drush_make_api' => array(
       'label' => t('Drush make API (for makefile)'),
       'field types' => array('text'),
-      'multiple values' => CONTENT_HANDLE_CORE,
+      'mfultiple values' => CONTENT_HANDLE_CORE,
       'description' => t('Displays modules in a table with the shortname, server, api and version'),
     ),
     'core_api' => array(

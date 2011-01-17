@@ -21,16 +21,11 @@ class Drush_make_release_generic{
     $this->set_type($options);
     $this->set_directories($options);
     // we dont set a location, if we set a download directly
-    if(array_key_exists('set_version', $this->options) && $this->options['set_version'] === TRUE) {
-       $this->set_version($options);
-    }
     
-    if(array_key_exists('set_download', $this->options) && $this->options['set_download'] === TRUE) {
-      $this->set_download($options);
-    }
-    else {
-      $this->set_location($options);
-    }
+    $this->set_version($options);
+    $this->set_download($options);    
+    $this->set_location($options);
+    
     $module = $this->release->module_name();
     // if we have no options, try the very short variant
     if(count($options) == 0) {      
@@ -44,12 +39,12 @@ class Drush_make_release_generic{
   protected function array_to_string($array, $prefix = '') {
     $result = '';
     foreach($array as $key => $value) {
-      $result .= "{$prefix}[$key]";
+      //$result .= "";
       if(is_array($value)) {
-        $result .= $this->array_to_string($value, '');
+        $result .= $this->array_to_string($value, "{$prefix}[$key]");
       } 
       else {
-        $result .= "=\"$value\"";  
+        $result .= "{$prefix}[$key]=\"$value\"";  
       }
       $result .= "\n";
     }
