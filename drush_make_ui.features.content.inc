@@ -164,8 +164,8 @@ The content of this file will plainly be tailed to the end of the generated make
     'active' => '1',
     'text_processing' => '0',
     'max_length' => '',
-    'allowed_values' => '2.x
-1.x',
+    'allowed_values' => '2
+1',
     'allowed_values_php' => '',
     'widget' => array(
       'default_value' => array(
