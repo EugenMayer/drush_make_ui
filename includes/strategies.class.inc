@@ -28,11 +28,21 @@ class Drush_make_release_generic{
     
     $module = $this->release->module_name();
     // if we have no options, try the very short variant
+    $type = 'projects';
+    switch($this->release->type()) {
+      case 'libraries':
+        $type = 'libraries';
+      break;
+      default:
+        $type = 'projects';
+      break;
+    }
+    
     if(count($options) == 0) {      
-      return "projects[]=$module";
+      return "{$type}[]=$module";
     }
     // else
-    $result = $this->array_to_string($options,"projects[$module]");
+    $result = $this->array_to_string($options,"{$type}[$module]");
     return $result;
   }
   
