@@ -32,6 +32,9 @@ class Drush_make_release_generic{
     switch($this->release->type()) {
       case 'libraries':
         $type = 'libraries';
+	if(preg_match('/(.*)_lib$/',$module,$match) > 0) {
+	  $module = $match[1];
+	}
       break;
       default:
         $type = 'projects';
