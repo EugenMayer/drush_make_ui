@@ -12,7 +12,7 @@ function drush_make_ui_content_default_fields() {
     'type_name' => 'drush_make_file',
     'display_settings' => array(
       'weight' => '10',
-      'parent' => 'group_extras',
+      'parent' => '',
       'label' => array(
         'format' => 'inline',
       ),
@@ -58,7 +58,7 @@ function drush_make_ui_content_default_fields() {
       ),
       'default_value_php' => NULL,
       'label' => 'Core',
-      'weight' => '10',
+      'weight' => '5',
       'description' => '',
       'type' => 'optionwidgets_select',
       'module' => 'optionwidgets',
@@ -71,7 +71,7 @@ function drush_make_ui_content_default_fields() {
     'type_name' => 'drush_make_file',
     'display_settings' => array(
       'weight' => '13',
-      'parent' => 'group_extras',
+      'parent' => '',
       'label' => array(
         'format' => 'inline',
       ),
@@ -117,7 +117,7 @@ function drush_make_ui_content_default_fields() {
       ),
       'default_value_php' => NULL,
       'label' => 'Custom settings',
-      'weight' => '13',
+      'weight' => '11',
       'description' => 'You can enter customer specifications here for adding any kind of things which are e.g. not yet supported by the UI or whatever you like.
 The content of this file will plainly be tailed to the end of the generated make file.',
       'type' => 'text_textarea',
@@ -131,7 +131,7 @@ The content of this file will plainly be tailed to the end of the generated make
     'type_name' => 'drush_make_file',
     'display_settings' => array(
       'weight' => '12',
-      'parent' => 'group_extras',
+      'parent' => '',
       'label' => array(
         'format' => 'inline',
       ),
@@ -175,7 +175,7 @@ The content of this file will plainly be tailed to the end of the generated make
       ),
       'default_value_php' => NULL,
       'label' => 'Drush make API',
-      'weight' => '12',
+      'weight' => '7',
       'description' => '',
       'type' => 'optionwidgets_select',
       'module' => 'optionwidgets',
@@ -188,7 +188,7 @@ The content of this file will plainly be tailed to the end of the generated make
     'type_name' => 'drush_make_file',
     'display_settings' => array(
       'weight' => '6',
-      'parent' => 'group_packages',
+      'parent' => '',
       'label' => array(
         'format' => 'hidden',
       ),
@@ -231,7 +231,7 @@ The content of this file will plainly be tailed to the end of the generated make
       ),
       'default_value_php' => NULL,
       'label' => 'Packages',
-      'weight' => '6',
+      'weight' => '2',
       'description' => '',
       'type' => 'update_feed_cck_widget',
       'module' => 'update_feed_cck',
