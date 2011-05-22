@@ -182,7 +182,7 @@ function drush_make_ui_views_default_views() {
   ));
   $handler->override_option('arguments', array(
     'vid' => array(
-      'default_action' => 'ignore',
+      'default_action' => 'empty',
       'style_plugin' => 'default_summary',
       'style_options' => array(),
       'wildcard' => 'all',
@@ -192,7 +192,7 @@ function drush_make_ui_views_default_views() {
       'default_argument_type' => 'fixed',
       'default_argument' => '',
       'validate_type' => 'numeric',
-      'validate_fail' => 'not found',
+      'validate_fail' => 'empty',
       'break_phrase' => 0,
       'not' => 0,
       'id' => 'vid',
@@ -217,6 +217,7 @@ function drush_make_ui_views_default_views() {
         'server' => 0,
         'site' => 0,
         'task' => 0,
+        'drupal_project' => 0,
         'component' => 0,
         'fserver_distro' => 0,
         'fserver_project' => 0,
@@ -235,7 +236,10 @@ function drush_make_ui_views_default_views() {
     'type' => 'none',
   ));
   $handler->override_option('title', 'Drush make file');
-  $handler->override_option('distinct', 0);
+  $handler->override_option('empty', 'You have no make-file field in the provided node or you did not provide a vid ( node revision ) as first argument.');
+  $handler->override_option('empty_format', '1');
+  $handler->override_option('items_per_page', 30);
+  $handler->override_option('distinct', 1);
   $handler->override_option('style_plugin', 'table');
   $handler->override_option('style_options', array(
     'grouping' => '',
@@ -284,6 +288,7 @@ function drush_make_ui_views_default_views() {
     'name' => 'navigation',
   ));
   $handler = $view->new_display('feed', 'Feed', 'feed_1');
+  $handler->override_option('items_per_page', 0);
   $handler->override_option('style_plugin', 'drush_make_ui_makefile');
   $handler->override_option('style_options', array(
     'mission_description' => FALSE,
