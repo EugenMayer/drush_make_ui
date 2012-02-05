@@ -1,6 +1,6 @@
 core = "6.x"
 dependencies[] = "autoload"
-dependencies[] = "context"
+dependencies[] = "content"
 dependencies[] = "ctools"
 dependencies[] = "features"
 dependencies[] = "fieldgroup"
