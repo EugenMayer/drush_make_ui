@@ -6,7 +6,6 @@
 function drush_make_ui_views_default_views() {
   $views = array();
 
-  // Exported view: drush_make_file_generator
   $view = new view;
   $view->name = 'drush_make_file_generator';
   $view->description = 'Drush make file generator';
@@ -322,8 +321,6 @@ function drush_make_ui_views_default_views() {
   $handler->override_option('sitename_title', FALSE);
 
   $views[$view->name] = $view;
-
-  // Exported view: drush_make_files
   $view = new view;
   $view->name = 'drush_make_files';
   $view->description = 'Drush Make Files';
