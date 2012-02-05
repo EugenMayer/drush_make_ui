@@ -24,7 +24,7 @@ function drush_make_ui_field_formatter_info() {
       'field types' => array('text'),
       'multiple values' => CONTENT_HANDLE_CORE,
       'description' => t('Displays modules in a table with the shortname, server, api and version'),
-    ),    
+    ),
   );
 }
 
@@ -47,7 +47,7 @@ function drush_make_ui_theme() {
 }
 
 function drush_make_ui_autoload_info() {
-  $path = drupal_get_path('module','drush_make_ui').'/includes/';
+  $path = drupal_get_path('module', 'drush_make_ui') . '/includes/';
   return array(
     'Drush_make_release' => array(
       'file' => 'drush_make_release.class.inc',
@@ -61,27 +61,27 @@ function drush_make_ui_autoload_info() {
 }
 
 function drush_make_ui_link($type, &$node) {
-  switch($node->type) {
+  switch ($node->type) {
     case 'drush_make_file':
-      $src = drupal_get_path('module','drush_make_ui').'/images/make-icon.png';
+      $src = drupal_get_path('module', 'drush_make_ui') . '/images/make-icon.png';
       return array(
         'make_file_dl' => array(
-          'title' => "<img class='download_make_file' src='/$src'>".t('Download makefile'),
-          'href' => 'drush_make_ui/generate/'.$node->vid,
+          'title' => "<img class='download_make_file' src='/$src'>" . t('Download makefile'),
+          'href' => 'drush_make_ui/generate/' . $node->vid,
           'query' => array(
-            'filename' => str_replace(' ','_',check_plain($node->title)).'.make',
-          ),  
+            'filename' => str_replace(' ', '_', check_plain($node->title)) . '.make',
+          ),
           'html' => TRUE
         )
       );
-    break;
+      break;
   }
 }
 
 function drush_make_ui_nodeapi(&$node, $op, $a3, $a4) {
-  switch($op) {
+  switch ($op) {
     case 'view':
-      ctools_add_css('drush_make_ui','drush_make_ui');
-    break;
+      ctools_add_css('drush_make_ui', 'drush_make_ui');
+      break;
   }
 }

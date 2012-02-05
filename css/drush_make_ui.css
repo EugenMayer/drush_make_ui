@@ -1,8 +1,8 @@
 img.download_make_file {
-  height:18px;
-  margin-right:4px;
+  height: 18px;
+  margin-right: 4px;
 }
 
-table tr.has_newer td:first-child{
-  border:2px dotted #163452;
+table tr.has_newer td:first-child {
+  border: 2px dotted #163452;
 }

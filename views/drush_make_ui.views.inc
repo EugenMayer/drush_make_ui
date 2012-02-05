@@ -42,7 +42,7 @@ function template_preprocess_drush_make_ui_makefile(&$vars) {
 /**
  * Implementation of hook_views_post_render().
  */
-function drush_make_ui_views_post_render(&$view, &$output, &$cache) {  
+function drush_make_ui_views_post_render(&$view, &$output, &$cache) {
   if (is_a($view->style_plugin, 'drush_make_ui_export')) {
     if (ob_get_level()) {
       ob_end_clean();
@@ -52,7 +52,7 @@ function drush_make_ui_views_post_render(&$view, &$output, &$cache) {
     drupal_set_header("Content-Lenght: $lenght");
     print $output;
     exit();
-  } 
+  }
 }
 
 /**
@@ -64,22 +64,22 @@ function drush_make_ui_views_post_render(&$view, &$output, &$cache) {
  * No return. Headers are added to page.
  */
 function _drush_make_ui_export_add_headers(&$view) {
-  $style = $view->style_plugin;  
+  $style = $view->style_plugin;
 
   if (isset($style->options['filename'])) {
     $filename = strtr(
       $style->options['filename'],
       array('%view' => check_plain($view->name))
     );
-    if(!empty($_GET['filename'])) {
+    if (!empty($_GET['filename'])) {
       $filename = $_GET['filename'];
     }
     $filename = mime_header_encode($filename);
     if ($filename) {
-      drupal_set_header('Content-Disposition: attachment; filename="'. $filename .'"');
+      drupal_set_header('Content-Disposition: attachment; filename="' . $filename . '"');
     }
   }
-  
+
   drupal_set_header('Cache-Control: private');
-  drupal_set_header("Content-Type: txt/plain; name='$filename'");  
+  drupal_set_header("Content-Type: txt/plain; name='$filename'");
 }

@@ -118,11 +118,11 @@ class drush_make_ui_export extends views_plugin_style {
     $options = array(
       'html' => TRUE,
     );
-    if(count($query) > 0) {
+    if (count($query) > 0) {
       $options['query'] = $query;
     }
-    
-    $link = l($image,$this->view->get_url(NULL, $path), $options);
+
+    $link = l($image, $this->view->get_url(NULL, $path), $options);
     $this->view->feed_icon .= $link;
   }
 
