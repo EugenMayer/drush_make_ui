@@ -1,1 +1,12 @@
 please look at the project page at http://drupal.org/project/drush_make_ui
+
+For a 3-step quick-setup, use the make file:
+
+1. Build the project
+ > drush make drush_make_ui.make.noauto drush_make_ui
+2. Install a drupal. Please refine the database access settings and probaly the domain (its installed for http://drush_make_ui.l by default)
+ > drush si --site-name="drush_make_ui.l" --sites-subdir="drush_make_ui.l" --db-url="mysql://root:root@localhost:3306/drush_make_ui" --account-name="Admin" --account-pass="test" -y
+3. enable the module - thats pretty much it
+ > drush en drush_make_ui -y
+
+You are now set to go to use drush_make_ui :)
