@@ -60,7 +60,7 @@ function drush_make_ui_autoload_info() {
   );
 }
 
-function drush_make_ui_link($type, &$node) {
+function drush_make_ui_link($type, $node) {
   switch ($node->type) {
     case 'drush_make_file':
       $src = drupal_get_path('module', 'drush_make_ui') . '/images/make-icon.png';
