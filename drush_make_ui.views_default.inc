@@ -6,805 +6,407 @@
 function drush_make_ui_views_default_views() {
   $views = array();
 
+  // Exported view: drush_make_file_generator
   $view = new view;
   $view->name = 'drush_make_file_generator';
   $view->description = 'Drush make file generator';
   $view->tag = '';
-  $view->view_php = '';
-  $view->base_table = 'node';
-  $view->is_cacheable = FALSE;
-  $view->api_version = 2;
+  $view->base_table = 'node_revisions';
+  $view->human_name = '';
+  $view->core = 0;
+  $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Defaults */
   $handler = $view->new_display('default', 'Defaults', 'default');
-  $handler->override_option('fields', array(
+  $handler->display->display_options['title'] = 'Drush make file';
+  $handler->display->display_options['items_per_page'] = 0;
+  $handler->display->display_options['access']['type'] = 'none';
+  $handler->display->display_options['cache']['type'] = 'time';
+  $handler->display->display_options['cache']['results_lifespan'] = '21600';
+  $handler->display->display_options['cache']['output_lifespan'] = '21600';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['query']['options']['distinct'] = TRUE;
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'full';
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'field_drush_make_api_value' => 'field_drush_make_api_value',
+    'field_core_version_value' => 'field_core_version_value',
+    'field_module_title' => 'field_module_title',
+    'field_custom_value' => 'field_custom_value',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
     'field_drush_make_api_value' => array(
-      'label' => '',
-      'alter' => array(
-        'alter_text' => 0,
-        'text' => '',
-        'make_link' => 0,
-        'path' => '',
-        'link_class' => '',
-        'alt' => '',
-        'prefix' => '',
-        'suffix' => '',
-        'target' => '',
-        'help' => '',
-        'trim' => 0,
-        'max_length' => '',
-        'word_boundary' => 0,
-        'ellipsis' => 0,
-        'html' => 0,
-        'strip_tags' => 0,
-      ),
-      'empty' => '',
-      'hide_empty' => 0,
-      'empty_zero' => 0,
-      'link_to_node' => 0,
-      'label_type' => 'none',
-      'format' => 'drush_make_api',
-      'multiple' => array(
-        'group' => TRUE,
-        'multiple_number' => '',
-        'multiple_from' => '',
-        'multiple_reversed' => FALSE,
-      ),
-      'exclude' => 0,
-      'id' => 'field_drush_make_api_value',
-      'table' => 'node_data_field_drush_make_api',
-      'field' => 'field_drush_make_api_value',
-      'override' => array(
-        'button' => 'Override',
-      ),
-      'relationship' => 'none',
+      'sortable' => 0,
+      'separator' => '',
     ),
     'field_core_version_value' => array(
-      'label' => '',
-      'alter' => array(
-        'alter_text' => 0,
-        'text' => '',
-        'make_link' => 0,
-        'path' => '',
-        'link_class' => '',
-        'alt' => '',
-        'prefix' => '',
-        'suffix' => '',
-        'target' => '',
-        'help' => '',
-        'trim' => 0,
-        'max_length' => '',
-        'word_boundary' => 1,
-        'ellipsis' => 1,
-        'html' => 0,
-        'strip_tags' => 0,
-      ),
-      'empty' => '',
-      'hide_empty' => 0,
-      'empty_zero' => 0,
-      'link_to_node' => 0,
-      'label_type' => 'none',
-      'format' => 'core_api',
-      'multiple' => array(
-        'group' => TRUE,
-        'multiple_number' => '',
-        'multiple_from' => '',
-        'multiple_reversed' => FALSE,
-      ),
-      'exclude' => 0,
-      'id' => 'field_core_version_value',
-      'table' => 'node_data_field_core_version',
-      'field' => 'field_core_version_value',
-      'override' => array(
-        'button' => 'Override',
-      ),
-      'relationship' => 'none',
-    ),
-    'field_custom_value' => array(
-      'label' => '',
-      'alter' => array(
-        'alter_text' => 0,
-        'text' => '',
-        'make_link' => 0,
-        'path' => '',
-        'link_class' => '',
-        'alt' => '',
-        'prefix' => '',
-        'suffix' => '',
-        'target' => '',
-        'help' => '',
-        'trim' => 0,
-        'max_length' => '',
-        'word_boundary' => 0,
-        'ellipsis' => 0,
-        'html' => 0,
-        'strip_tags' => 0,
-      ),
-      'empty' => '',
-      'hide_empty' => 0,
-      'empty_zero' => 0,
-      'link_to_node' => 0,
-      'label_type' => 'none',
-      'format' => 'default',
-      'multiple' => array(
-        'group' => TRUE,
-        'multiple_number' => '',
-        'multiple_from' => '',
-        'multiple_reversed' => FALSE,
-      ),
-      'exclude' => 0,
-      'id' => 'field_custom_value',
-      'table' => 'node_data_field_custom',
-      'field' => 'field_custom_value',
-      'override' => array(
-        'button' => 'Override',
-      ),
-      'relationship' => 'none',
+      'sortable' => 0,
+      'separator' => '',
     ),
     'field_module_title' => array(
-      'label' => '',
-      'alter' => array(
-        'alter_text' => 0,
-        'text' => '',
-        'make_link' => 0,
-        'path' => '',
-        'link_class' => '',
-        'alt' => '',
-        'prefix' => '',
-        'suffix' => '',
-        'target' => '',
-        'help' => '',
-        'trim' => 0,
-        'max_length' => '',
-        'word_boundary' => 1,
-        'ellipsis' => 1,
-        'html' => 0,
-        'strip_tags' => 0,
-      ),
-      'empty' => '',
-      'hide_empty' => 0,
-      'empty_zero' => 0,
-      'link_to_node' => 0,
-      'label_type' => 'none',
-      'format' => 'makefile',
-      'multiple' => array(
-        'group' => 1,
-        'multiple_number' => '',
-        'multiple_from' => '',
-        'multiple_reversed' => 0,
-      ),
-      'exclude' => 0,
-      'id' => 'field_module_title',
-      'table' => 'node_data_field_module',
-      'field' => 'field_module_title',
-      'relationship' => 'none',
+      'separator' => '',
     ),
-  ));
-  $handler->override_option('arguments', array(
-    'vid' => array(
-      'default_action' => 'empty',
-      'style_plugin' => 'default_summary',
-      'style_options' => array(),
-      'wildcard' => 'all',
-      'wildcard_substitution' => 'All',
-      'title' => '',
-      'breadcrumb' => '',
-      'default_argument_type' => 'fixed',
-      'default_argument' => '',
-      'validate_type' => 'numeric',
-      'validate_fail' => 'empty',
-      'break_phrase' => 0,
-      'not' => 0,
-      'id' => 'vid',
-      'table' => 'node_revisions',
-      'field' => 'vid',
-      'validate_user_argument_type' => 'uid',
-      'validate_user_roles' => array(
-        '2' => 0,
-        '4' => 0,
-        '3' => 0,
-      ),
-      'relationship' => 'none',
-      'default_options_div_prefix' => '',
-      'default_argument_user' => 0,
-      'default_argument_fixed' => '',
-      'default_argument_php' => '',
-      'validate_argument_node_type' => array(
-        'drush_make_file' => 'drush_make_file',
-        'client' => 0,
-        'package' => 0,
-        'platform' => 0,
-        'server' => 0,
-        'site' => 0,
-        'task' => 0,
-        'drupal_project' => 0,
-        'component' => 0,
-        'fserver_distro' => 0,
-        'fserver_project' => 0,
-        'fserver_release' => 0,
-      ),
-      'validate_argument_node_access' => 1,
-      'validate_argument_nid_type' => 'nid',
-      'validate_user_restrict_roles' => 0,
-      'validate_argument_php' => '',
+    'field_custom_value' => array(
+      'sortable' => 0,
+      'separator' => '',
     ),
-  ));
-  $handler->override_option('access', array(
-    'type' => 'none',
-  ));
-  $handler->override_option('cache', array(
-    'type' => 'time',
-    'results_lifespan' => '21600',
-    'output_lifespan' => '21600',
-  ));
-  $handler->override_option('title', 'Drush make file');
-  $handler->override_option('empty', 'You have no make-file field in the provided node or you did not provide a vid ( node revision ) as first argument.');
-  $handler->override_option('empty_format', '1');
-  $handler->override_option('items_per_page', 0);
-  $handler->override_option('distinct', 1);
-  $handler->override_option('style_plugin', 'table');
-  $handler->override_option('style_options', array(
-    'grouping' => '',
-    'override' => 1,
-    'sticky' => 0,
-    'order' => 'asc',
-    'columns' => array(
-      'field_drush_make_api_value' => 'field_drush_make_api_value',
-      'field_core_version_value' => 'field_core_version_value',
-      'field_module_title' => 'field_module_title',
-      'field_custom_value' => 'field_custom_value',
-    ),
-    'info' => array(
-      'field_drush_make_api_value' => array(
-        'sortable' => 0,
-        'separator' => '',
-      ),
-      'field_core_version_value' => array(
-        'sortable' => 0,
-        'separator' => '',
-      ),
-      'field_module_title' => array(
-        'separator' => '',
-      ),
-      'field_custom_value' => array(
-        'sortable' => 0,
-        'separator' => '',
-      ),
-    ),
-    'default' => '-1',
-  ));
+  );
+  $handler->display->display_options['style_options']['override'] = 1;
+  $handler->display->display_options['style_options']['sticky'] = 0;
+  /* Empty text: Global: Text area */
+  $handler->display->display_options['empty']['text']['id'] = 'area';
+  $handler->display->display_options['empty']['text']['table'] = 'views';
+  $handler->display->display_options['empty']['text']['field'] = 'area';
+  $handler->display->display_options['empty']['text']['label'] = '';
+  $handler->display->display_options['empty']['text']['empty'] = FALSE;
+  $handler->display->display_options['empty']['text']['content'] = 'You have no make-file field in the provided node or you did not provide a vid ( node revision ) as first argument.';
+  $handler->display->display_options['empty']['text']['format'] = '1';
+  /* Field: Content: Drush make API (field_drush_make_api) */
+  $handler->display->display_options['fields']['field_drush_make_api_value']['id'] = 'field_drush_make_api_value';
+  $handler->display->display_options['fields']['field_drush_make_api_value']['table'] = 'node_data_field_drush_make_api';
+  $handler->display->display_options['fields']['field_drush_make_api_value']['field'] = 'field_drush_make_api_value';
+  $handler->display->display_options['fields']['field_drush_make_api_value']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_drush_make_api_value']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_drush_make_api_value']['alter']['word_boundary'] = 0;
+  $handler->display->display_options['fields']['field_drush_make_api_value']['alter']['ellipsis'] = 0;
+  $handler->display->display_options['fields']['field_drush_make_api_value']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_drush_make_api_value']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_drush_make_api_value']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_drush_make_api_value']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_drush_make_api_value']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_drush_make_api_value']['link_to_node'] = 0;
+  $handler->display->display_options['fields']['field_drush_make_api_value']['label_type'] = 'none';
+  $handler->display->display_options['fields']['field_drush_make_api_value']['format'] = 'drush_make_api';
+  /* Field: Content: Core (field_core_version) */
+  $handler->display->display_options['fields']['field_core_version_value']['id'] = 'field_core_version_value';
+  $handler->display->display_options['fields']['field_core_version_value']['table'] = 'node_data_field_core_version';
+  $handler->display->display_options['fields']['field_core_version_value']['field'] = 'field_core_version_value';
+  $handler->display->display_options['fields']['field_core_version_value']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_core_version_value']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_core_version_value']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_core_version_value']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_core_version_value']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_core_version_value']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_core_version_value']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_core_version_value']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_core_version_value']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_core_version_value']['link_to_node'] = 0;
+  $handler->display->display_options['fields']['field_core_version_value']['label_type'] = 'none';
+  $handler->display->display_options['fields']['field_core_version_value']['format'] = 'core_api';
+  /* Field: Content: Custom settings (field_custom) */
+  $handler->display->display_options['fields']['field_custom_value']['id'] = 'field_custom_value';
+  $handler->display->display_options['fields']['field_custom_value']['table'] = 'node_data_field_custom';
+  $handler->display->display_options['fields']['field_custom_value']['field'] = 'field_custom_value';
+  $handler->display->display_options['fields']['field_custom_value']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_custom_value']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_custom_value']['alter']['word_boundary'] = 0;
+  $handler->display->display_options['fields']['field_custom_value']['alter']['ellipsis'] = 0;
+  $handler->display->display_options['fields']['field_custom_value']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_custom_value']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_custom_value']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_custom_value']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_custom_value']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_custom_value']['link_to_node'] = 0;
+  $handler->display->display_options['fields']['field_custom_value']['label_type'] = 'none';
+  /* Field: Content: Modules (field_module) */
+  $handler->display->display_options['fields']['field_module_title']['id'] = 'field_module_title';
+  $handler->display->display_options['fields']['field_module_title']['table'] = 'node_data_field_module';
+  $handler->display->display_options['fields']['field_module_title']['field'] = 'field_module_title';
+  $handler->display->display_options['fields']['field_module_title']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_module_title']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_module_title']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_module_title']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_module_title']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_module_title']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_module_title']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_module_title']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_module_title']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_module_title']['link_to_node'] = 0;
+  $handler->display->display_options['fields']['field_module_title']['label_type'] = 'none';
+  $handler->display->display_options['fields']['field_module_title']['format'] = 'makefile';
+  $handler->display->display_options['fields']['field_module_title']['multiple']['group'] = 1;
+  $handler->display->display_options['fields']['field_module_title']['multiple']['multiple_reversed'] = 0;
+  /* Argument: Node revision: Vid */
+  $handler->display->display_options['arguments']['vid']['id'] = 'vid';
+  $handler->display->display_options['arguments']['vid']['table'] = 'node_revisions';
+  $handler->display->display_options['arguments']['vid']['field'] = 'vid';
+  $handler->display->display_options['arguments']['vid']['default_action'] = 'empty';
+  $handler->display->display_options['arguments']['vid']['style_plugin'] = 'default_summary';
+  $handler->display->display_options['arguments']['vid']['default_argument_type'] = 'fixed';
+  $handler->display->display_options['arguments']['vid']['validate_type'] = 'numeric';
+  $handler->display->display_options['arguments']['vid']['validate_fail'] = 'empty';
+  $handler->display->display_options['arguments']['vid']['break_phrase'] = 0;
+  $handler->display->display_options['arguments']['vid']['not'] = 0;
+
+  /* Display: Drush make file */
   $handler = $view->new_display('page', 'Drush make file', 'page_1');
-  $handler->override_option('path', 'drush_makefile');
-  $handler->override_option('menu', array(
-    'type' => 'normal',
-    'title' => 'Makefile',
-    'description' => '',
-    'weight' => '0',
-    'name' => 'navigation',
-  ));
-  $handler->override_option('tab_options', array(
-    'type' => 'none',
-    'title' => '',
-    'description' => '',
-    'weight' => 0,
-    'name' => 'navigation',
-  ));
+  $handler->display->display_options['path'] = 'drush_makefile';
+  $handler->display->display_options['menu']['type'] = 'normal';
+  $handler->display->display_options['menu']['title'] = 'Makefile';
+  $handler->display->display_options['menu']['weight'] = '0';
+
+  /* Display: Feed */
   $handler = $view->new_display('feed', 'Feed', 'feed_1');
-  $handler->override_option('style_plugin', 'drush_make_ui_makefile');
-  $handler->override_option('style_options', array(
-    'mission_description' => FALSE,
-    'description' => '',
-    'attach_text' => 'Download makefile',
-    'provide_file' => 1,
-    'filename' => 'view-%view.make',
-    'parent_sort' => 0,
-  ));
-  $handler->override_option('row_plugin', '');
-  $handler->override_option('path', 'drush_make_ui/generate');
-  $handler->override_option('menu', array(
-    'type' => 'none',
-    'title' => '',
-    'description' => '',
-    'weight' => 0,
-    'name' => 'navigation',
-  ));
-  $handler->override_option('tab_options', array(
-    'type' => 'none',
-    'title' => '',
-    'description' => '',
-    'weight' => 0,
-    'name' => 'navigation',
-  ));
-  $handler->override_option('displays', array(
+  $handler->display->display_options['pager']['type'] = 'some';
+  $handler->display->display_options['style_plugin'] = 'drush_make_ui_makefile';
+  $handler->display->display_options['style_options']['attach_text'] = 'Download makefile';
+  $handler->display->display_options['style_options']['provide_file'] = 1;
+  $handler->display->display_options['style_options']['parent_sort'] = 0;
+  $handler->display->display_options['path'] = 'drush_make_ui/generate';
+  $handler->display->display_options['displays'] = array(
     'page_1' => 'page_1',
     'default' => 0,
-  ));
-  $handler->override_option('sitename_title', FALSE);
+  );
 
   $views[$view->name] = $view;
+
+  // Exported view: drush_make_files
   $view = new view;
   $view->name = 'drush_make_files';
   $view->description = 'Drush Make Files';
   $view->tag = '';
-  $view->view_php = '';
   $view->base_table = 'node';
-  $view->is_cacheable = FALSE;
-  $view->api_version = 2;
+  $view->human_name = '';
+  $view->core = 0;
+  $view->api_version = '3.0';
   $view->disabled = FALSE; /* Edit this to true to make a default view disabled initially */
+
+  /* Display: Defaults */
   $handler = $view->new_display('default', 'Defaults', 'default');
-  $handler->override_option('fields', array(
+  $handler->display->display_options['title'] = 'Drush make files';
+  $handler->display->display_options['use_ajax'] = TRUE;
+  $handler->display->display_options['access']['type'] = 'role';
+  $handler->display->display_options['access']['role'] = array(
+    2 => 2,
+  );
+  $handler->display->display_options['cache']['type'] = 'none';
+  $handler->display->display_options['query']['type'] = 'views_query';
+  $handler->display->display_options['exposed_form']['type'] = 'basic';
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['style_plugin'] = 'table';
+  $handler->display->display_options['style_options']['columns'] = array(
+    'title' => 'title',
+  );
+  $handler->display->display_options['style_options']['default'] = '-1';
+  $handler->display->display_options['style_options']['info'] = array(
     'title' => array(
-      'label' => 'Name',
-      'alter' => array(
-        'alter_text' => 0,
-        'text' => '',
-        'make_link' => 0,
-        'path' => '',
-        'link_class' => '',
-        'alt' => '',
-        'prefix' => '',
-        'suffix' => '',
-        'target' => '',
-        'help' => '',
-        'trim' => 0,
-        'max_length' => '',
-        'word_boundary' => 1,
-        'ellipsis' => 1,
-        'html' => 0,
-        'strip_tags' => 0,
-      ),
-      'empty' => '',
-      'hide_empty' => 0,
-      'empty_zero' => 0,
-      'link_to_node' => 1,
-      'exclude' => 0,
-      'id' => 'title',
-      'table' => 'node',
-      'field' => 'title',
-      'relationship' => 'none',
+      'sortable' => 0,
+      'separator' => '',
     ),
-    'field_core_version_value' => array(
-      'label' => 'Core',
-      'alter' => array(
-        'alter_text' => 0,
-        'text' => '',
-        'make_link' => 0,
-        'path' => '',
-        'link_class' => '',
-        'alt' => '',
-        'prefix' => '',
-        'suffix' => '',
-        'target' => '',
-        'help' => '',
-        'trim' => 0,
-        'max_length' => '',
-        'word_boundary' => 1,
-        'ellipsis' => 1,
-        'html' => 0,
-        'strip_tags' => 0,
-      ),
-      'empty' => '',
-      'hide_empty' => 0,
-      'empty_zero' => 0,
-      'link_to_node' => 0,
-      'label_type' => 'widget',
-      'format' => 'default',
-      'multiple' => array(
-        'group' => TRUE,
-        'multiple_number' => '',
-        'multiple_from' => '',
-        'multiple_reversed' => FALSE,
-      ),
-      'exclude' => 0,
-      'id' => 'field_core_version_value',
-      'table' => 'node_data_field_core_version',
-      'field' => 'field_core_version_value',
-      'relationship' => 'none',
-    ),
-    'field_drush_make_api_value' => array(
-      'label' => 'Drush API',
-      'alter' => array(
-        'alter_text' => 0,
-        'text' => '',
-        'make_link' => 0,
-        'path' => '',
-        'link_class' => '',
-        'alt' => '',
-        'prefix' => '',
-        'suffix' => '',
-        'target' => '',
-        'help' => '',
-        'trim' => 0,
-        'max_length' => '',
-        'word_boundary' => 1,
-        'ellipsis' => 1,
-        'html' => 0,
-        'strip_tags' => 0,
-      ),
-      'empty' => '',
-      'hide_empty' => 0,
-      'empty_zero' => 0,
-      'link_to_node' => 0,
-      'label_type' => 'custom',
-      'format' => 'default',
-      'multiple' => array(
-        'group' => TRUE,
-        'multiple_number' => '',
-        'multiple_from' => '',
-        'multiple_reversed' => FALSE,
-      ),
-      'exclude' => 0,
-      'id' => 'field_drush_make_api_value',
-      'table' => 'node_data_field_drush_make_api',
-      'field' => 'field_drush_make_api_value',
-      'relationship' => 'none',
-    ),
-    'field_module_title' => array(
-      'label' => 'Module (max 3)',
-      'alter' => array(
-        'alter_text' => 0,
-        'text' => '',
-        'make_link' => 0,
-        'path' => '',
-        'link_class' => '',
-        'alt' => '',
-        'prefix' => '',
-        'suffix' => '',
-        'target' => '',
-        'help' => '',
-        'trim' => 0,
-        'max_length' => '',
-        'word_boundary' => 1,
-        'ellipsis' => 1,
-        'html' => 0,
-        'strip_tags' => 0,
-      ),
-      'empty' => '',
-      'hide_empty' => 0,
-      'empty_zero' => 0,
-      'link_to_node' => 0,
-      'label_type' => 'custom',
-      'format' => 'default',
-      'multiple' => array(
-        'group' => 1,
-        'multiple_number' => '3',
-        'multiple_from' => '',
-        'multiple_reversed' => 0,
-      ),
-      'exclude' => 0,
-      'id' => 'field_module_title',
-      'table' => 'node_data_field_module',
-      'field' => 'field_module_title',
-      'relationship' => 'none',
-    ),
-  ));
-  $handler->override_option('filters', array(
-    'type' => array(
-      'operator' => 'in',
-      'value' => array(
-        'drush_make_file' => 'drush_make_file',
-      ),
-      'group' => '0',
-      'exposed' => FALSE,
-      'expose' => array(
-        'operator' => 'type_op',
-        'label' => 'Type',
-        'use_operator' => 0,
-        'identifier' => 'type',
-        'optional' => 0,
-        'single' => 1,
-        'remember' => 1,
-        'reduce' => 1,
-      ),
-      'id' => 'type',
-      'table' => 'node',
-      'field' => 'type',
-      'relationship' => 'none',
-    ),
-    'title' => array(
-      'operator' => 'contains',
-      'value' => '',
-      'group' => '0',
-      'exposed' => TRUE,
-      'expose' => array(
-        'use_operator' => 0,
-        'operator' => 'title_op',
-        'identifier' => 'Search',
-        'label' => 'Name',
-        'optional' => 1,
-        'remember' => 0,
-      ),
-      'case' => 1,
-      'id' => 'title',
-      'table' => 'node',
-      'field' => 'title',
-      'relationship' => 'none',
-    ),
-    'field_module_short_name' => array(
-      'operator' => 'contains',
-      'value' => '',
-      'group' => '0',
-      'exposed' => TRUE,
-      'expose' => array(
-        'use_operator' => 0,
-        'operator' => 'field_module_short_name_op',
-        'identifier' => 'field_module_short_name',
-        'label' => 'Includes module',
-        'optional' => 1,
-        'remember' => 0,
-      ),
-      'case' => 1,
-      'id' => 'field_module_short_name',
-      'table' => 'node_data_field_module',
-      'field' => 'field_module_short_name',
-      'relationship' => 'none',
-    ),
-  ));
-  $handler->override_option('access', array(
-    'type' => 'role',
-    'role' => array(
-      '2' => 2,
-    ),
-  ));
-  $handler->override_option('cache', array(
-    'type' => 'none',
-  ));
-  $handler->override_option('title', 'Drush make files');
-  $handler->override_option('use_ajax', TRUE);
-  $handler->override_option('style_plugin', 'table');
-  $handler->override_option('style_options', array(
-    'grouping' => '',
-    'override' => 1,
-    'sticky' => 0,
-    'order' => 'asc',
-    'columns' => array(
-      'title' => 'title',
-    ),
-    'info' => array(
-      'title' => array(
-        'sortable' => 0,
-        'separator' => '',
-      ),
-    ),
-    'default' => '-1',
-  ));
+  );
+  $handler->display->display_options['style_options']['override'] = 1;
+  $handler->display->display_options['style_options']['sticky'] = 0;
+  /* Field: Node: Title */
+  $handler->display->display_options['fields']['title']['id'] = 'title';
+  $handler->display->display_options['fields']['title']['table'] = 'node';
+  $handler->display->display_options['fields']['title']['field'] = 'title';
+  $handler->display->display_options['fields']['title']['label'] = 'Name';
+  $handler->display->display_options['fields']['title']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['title']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['title']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['title']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['title']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['title']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['title']['link_to_node'] = 1;
+  /* Field: Content: Core (field_core_version) */
+  $handler->display->display_options['fields']['field_core_version_value']['id'] = 'field_core_version_value';
+  $handler->display->display_options['fields']['field_core_version_value']['table'] = 'node_data_field_core_version';
+  $handler->display->display_options['fields']['field_core_version_value']['field'] = 'field_core_version_value';
+  $handler->display->display_options['fields']['field_core_version_value']['label'] = 'Core';
+  $handler->display->display_options['fields']['field_core_version_value']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_core_version_value']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_core_version_value']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_core_version_value']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_core_version_value']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_core_version_value']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_core_version_value']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_core_version_value']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_core_version_value']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_core_version_value']['link_to_node'] = 0;
+  /* Field: Content: Drush make API (field_drush_make_api) */
+  $handler->display->display_options['fields']['field_drush_make_api_value']['id'] = 'field_drush_make_api_value';
+  $handler->display->display_options['fields']['field_drush_make_api_value']['table'] = 'node_data_field_drush_make_api';
+  $handler->display->display_options['fields']['field_drush_make_api_value']['field'] = 'field_drush_make_api_value';
+  $handler->display->display_options['fields']['field_drush_make_api_value']['label'] = 'Drush API';
+  $handler->display->display_options['fields']['field_drush_make_api_value']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_drush_make_api_value']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_drush_make_api_value']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_drush_make_api_value']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_drush_make_api_value']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_drush_make_api_value']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_drush_make_api_value']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_drush_make_api_value']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_drush_make_api_value']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_drush_make_api_value']['link_to_node'] = 0;
+  $handler->display->display_options['fields']['field_drush_make_api_value']['label_type'] = 'custom';
+  /* Field: Content: Modules (field_module) */
+  $handler->display->display_options['fields']['field_module_title']['id'] = 'field_module_title';
+  $handler->display->display_options['fields']['field_module_title']['table'] = 'node_data_field_module';
+  $handler->display->display_options['fields']['field_module_title']['field'] = 'field_module_title';
+  $handler->display->display_options['fields']['field_module_title']['label'] = 'Module (max 3)';
+  $handler->display->display_options['fields']['field_module_title']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_module_title']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_module_title']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_module_title']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_module_title']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_module_title']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_module_title']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_module_title']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_module_title']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_module_title']['link_to_node'] = 0;
+  $handler->display->display_options['fields']['field_module_title']['label_type'] = 'custom';
+  $handler->display->display_options['fields']['field_module_title']['multiple']['group'] = 1;
+  $handler->display->display_options['fields']['field_module_title']['multiple']['multiple_number'] = '3';
+  $handler->display->display_options['fields']['field_module_title']['multiple']['multiple_reversed'] = 0;
+  /* Filter: Node: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'drush_make_file' => 'drush_make_file',
+  );
+  $handler->display->display_options['filters']['type']['expose']['operator'] = 'type_op';
+  $handler->display->display_options['filters']['type']['expose']['label'] = 'Type';
+  $handler->display->display_options['filters']['type']['expose']['identifier'] = 'type';
+  $handler->display->display_options['filters']['type']['expose']['optional'] = 0;
+  $handler->display->display_options['filters']['type']['expose']['remember'] = 1;
+  $handler->display->display_options['filters']['type']['expose']['reduce'] = 1;
+  /* Filter: Node: Title */
+  $handler->display->display_options['filters']['title']['id'] = 'title';
+  $handler->display->display_options['filters']['title']['table'] = 'node';
+  $handler->display->display_options['filters']['title']['field'] = 'title';
+  $handler->display->display_options['filters']['title']['operator'] = 'contains';
+  $handler->display->display_options['filters']['title']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['title']['expose']['operator'] = 'title_op';
+  $handler->display->display_options['filters']['title']['expose']['label'] = 'Name';
+  $handler->display->display_options['filters']['title']['expose']['identifier'] = 'Search';
+  $handler->display->display_options['filters']['title']['expose']['optional'] = 1;
+  $handler->display->display_options['filters']['title']['case'] = 1;
+  /* Filter: Content: Modules (field_module) - short_name */
+  $handler->display->display_options['filters']['field_module_short_name']['id'] = 'field_module_short_name';
+  $handler->display->display_options['filters']['field_module_short_name']['table'] = 'node_data_field_module';
+  $handler->display->display_options['filters']['field_module_short_name']['field'] = 'field_module_short_name';
+  $handler->display->display_options['filters']['field_module_short_name']['operator'] = 'contains';
+  $handler->display->display_options['filters']['field_module_short_name']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_module_short_name']['expose']['operator'] = 'field_module_short_name_op';
+  $handler->display->display_options['filters']['field_module_short_name']['expose']['label'] = 'Includes module';
+  $handler->display->display_options['filters']['field_module_short_name']['expose']['identifier'] = 'field_module_short_name';
+  $handler->display->display_options['filters']['field_module_short_name']['expose']['optional'] = 1;
+  $handler->display->display_options['filters']['field_module_short_name']['case'] = 1;
+
+  /* Display: Drush make files */
   $handler = $view->new_display('page', 'Drush make files', 'page_1');
-  $handler->override_option('filters', array(
-    'type' => array(
-      'operator' => 'in',
-      'value' => array(
-        'drush_make_file' => 'drush_make_file',
-        'component' => 'component',
-      ),
-      'group' => '0',
-      'exposed' => TRUE,
-      'expose' => array(
-        'use_operator' => 0,
-        'operator' => 'type_op',
-        'identifier' => 'type',
-        'label' => 'Type',
-        'optional' => 1,
-        'single' => 1,
-        'remember' => 0,
-        'reduce' => 1,
-      ),
-      'id' => 'type',
-      'table' => 'node',
-      'field' => 'type',
-      'relationship' => 'none',
-      'override' => array(
-        'button' => 'Use default',
-      ),
-    ),
-    'title' => array(
-      'operator' => 'contains',
-      'value' => '',
-      'group' => '0',
-      'exposed' => TRUE,
-      'expose' => array(
-        'use_operator' => 0,
-        'operator' => 'title_op',
-        'identifier' => 'Search',
-        'label' => 'Search',
-        'optional' => 1,
-        'remember' => 0,
-      ),
-      'case' => 1,
-      'id' => 'title',
-      'table' => 'node',
-      'field' => 'title',
-      'relationship' => 'none',
-    ),
-    'field_module_short_name' => array(
-      'operator' => 'contains',
-      'value' => '',
-      'group' => '0',
-      'exposed' => TRUE,
-      'expose' => array(
-        'use_operator' => 0,
-        'operator' => 'field_module_short_name_op',
-        'identifier' => 'field_module_short_name',
-        'label' => 'Includes module',
-        'optional' => 1,
-        'remember' => 0,
-      ),
-      'case' => 1,
-      'id' => 'field_module_short_name',
-      'table' => 'node_data_field_module',
-      'field' => 'field_module_short_name',
-      'relationship' => 'none',
-    ),
-  ));
-  $handler->override_option('path', 'drush_make_files');
-  $handler->override_option('menu', array(
-    'type' => 'none',
-    'title' => 'Drush make files',
-    'description' => 'Drush make files',
-    'weight' => '0',
-    'name' => 'navigation',
-  ));
-  $handler->override_option('tab_options', array(
-    'type' => 'none',
-    'title' => '',
-    'description' => '',
-    'weight' => 0,
-    'name' => 'navigation',
-  ));
+  $handler->display->display_options['defaults']['filters'] = FALSE;
+  /* Filter: Node: Type */
+  $handler->display->display_options['filters']['type']['id'] = 'type';
+  $handler->display->display_options['filters']['type']['table'] = 'node';
+  $handler->display->display_options['filters']['type']['field'] = 'type';
+  $handler->display->display_options['filters']['type']['value'] = array(
+    'drush_make_file' => 'drush_make_file',
+    'component' => 'component',
+  );
+  $handler->display->display_options['filters']['type']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['type']['expose']['operator'] = 'type_op';
+  $handler->display->display_options['filters']['type']['expose']['label'] = 'Type';
+  $handler->display->display_options['filters']['type']['expose']['identifier'] = 'type';
+  $handler->display->display_options['filters']['type']['expose']['reduce'] = 1;
+  /* Filter: Node: Title */
+  $handler->display->display_options['filters']['title']['id'] = 'title';
+  $handler->display->display_options['filters']['title']['table'] = 'node';
+  $handler->display->display_options['filters']['title']['field'] = 'title';
+  $handler->display->display_options['filters']['title']['operator'] = 'contains';
+  $handler->display->display_options['filters']['title']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['title']['expose']['operator'] = 'title_op';
+  $handler->display->display_options['filters']['title']['expose']['label'] = 'Search';
+  $handler->display->display_options['filters']['title']['expose']['identifier'] = 'Search';
+  $handler->display->display_options['filters']['title']['expose']['optional'] = 1;
+  $handler->display->display_options['filters']['title']['case'] = 1;
+  /* Filter: Content: Modules (field_module) - short_name */
+  $handler->display->display_options['filters']['field_module_short_name']['id'] = 'field_module_short_name';
+  $handler->display->display_options['filters']['field_module_short_name']['table'] = 'node_data_field_module';
+  $handler->display->display_options['filters']['field_module_short_name']['field'] = 'field_module_short_name';
+  $handler->display->display_options['filters']['field_module_short_name']['operator'] = 'contains';
+  $handler->display->display_options['filters']['field_module_short_name']['exposed'] = TRUE;
+  $handler->display->display_options['filters']['field_module_short_name']['expose']['operator'] = 'field_module_short_name_op';
+  $handler->display->display_options['filters']['field_module_short_name']['expose']['label'] = 'Includes module';
+  $handler->display->display_options['filters']['field_module_short_name']['expose']['identifier'] = 'field_module_short_name';
+  $handler->display->display_options['filters']['field_module_short_name']['expose']['optional'] = 1;
+  $handler->display->display_options['filters']['field_module_short_name']['case'] = 1;
+  $handler->display->display_options['path'] = 'drush_make_files';
+  $handler->display->display_options['menu']['title'] = 'Drush make files';
+  $handler->display->display_options['menu']['description'] = 'Drush make files';
+  $handler->display->display_options['menu']['weight'] = '0';
+
+  /* Display: Feed */
   $handler = $view->new_display('feed', 'Feed', 'feed_1');
-  $handler->override_option('fields', array(
-    'field_core_version_value' => array(
-      'label' => '',
-      'alter' => array(
-        'alter_text' => 0,
-        'text' => '',
-        'make_link' => 0,
-        'path' => '',
-        'link_class' => '',
-        'alt' => '',
-        'prefix' => '',
-        'suffix' => '',
-        'target' => '',
-        'help' => '',
-        'trim' => 0,
-        'max_length' => '',
-        'word_boundary' => 1,
-        'ellipsis' => 1,
-        'html' => 0,
-        'strip_tags' => 0,
-      ),
-      'empty' => '',
-      'hide_empty' => 0,
-      'empty_zero' => 0,
-      'link_to_node' => 0,
-      'label_type' => 'none',
-      'format' => 'core_api',
-      'multiple' => array(
-        'group' => TRUE,
-        'multiple_number' => '',
-        'multiple_from' => '',
-        'multiple_reversed' => FALSE,
-      ),
-      'exclude' => 0,
-      'id' => 'field_core_version_value',
-      'table' => 'node_data_field_core_version',
-      'field' => 'field_core_version_value',
-      'relationship' => 'none',
-      'override' => array(
-        'button' => 'Use default',
-      ),
-    ),
-    'field_drush_make_api_value' => array(
-      'label' => '',
-      'alter' => array(
-        'alter_text' => 0,
-        'text' => '',
-        'make_link' => 0,
-        'path' => '',
-        'link_class' => '',
-        'alt' => '',
-        'prefix' => '',
-        'suffix' => '',
-        'target' => '',
-        'help' => '',
-        'trim' => 0,
-        'max_length' => '',
-        'word_boundary' => 1,
-        'ellipsis' => 1,
-        'html' => 0,
-        'strip_tags' => 0,
-      ),
-      'empty' => '',
-      'hide_empty' => 0,
-      'empty_zero' => 0,
-      'link_to_node' => 0,
-      'label_type' => 'none',
-      'format' => 'drush_make_api',
-      'multiple' => array(
-        'group' => TRUE,
-        'multiple_number' => '',
-        'multiple_from' => '',
-        'multiple_reversed' => FALSE,
-      ),
-      'exclude' => 0,
-      'id' => 'field_drush_make_api_value',
-      'table' => 'node_data_field_drush_make_api',
-      'field' => 'field_drush_make_api_value',
-      'relationship' => 'none',
-      'override' => array(
-        'button' => 'Use default',
-      ),
-    ),
-    'field_module_title' => array(
-      'label' => '',
-      'alter' => array(
-        'alter_text' => 0,
-        'text' => '',
-        'make_link' => 0,
-        'path' => '',
-        'link_class' => '',
-        'alt' => '',
-        'prefix' => '',
-        'suffix' => '',
-        'target' => '',
-        'help' => '',
-        'trim' => 0,
-        'max_length' => '',
-        'word_boundary' => 1,
-        'ellipsis' => 1,
-        'html' => 0,
-        'strip_tags' => 0,
-      ),
-      'empty' => '',
-      'hide_empty' => 0,
-      'empty_zero' => 0,
-      'link_to_node' => 0,
-      'label_type' => 'none',
-      'format' => 'makefile',
-      'multiple' => array(
-        'group' => 1,
-        'multiple_number' => '3',
-        'multiple_from' => '',
-        'multiple_reversed' => 0,
-      ),
-      'exclude' => 0,
-      'id' => 'field_module_title',
-      'table' => 'node_data_field_module',
-      'field' => 'field_module_title',
-      'relationship' => 'none',
-      'override' => array(
-        'button' => 'Use default',
-      ),
-    ),
-  ));
-  $handler->override_option('style_plugin', 'drush_make_ui_makefile');
-  $handler->override_option('style_options', array(
-    'mission_description' => FALSE,
-    'description' => '',
-    'attach_text' => 'Download makefile. The makefile is generated out of all current makefiles!',
-    'provide_file' => 1,
-    'filename' => 'view-%view.make',
-    'parent_sort' => 0,
-  ));
-  $handler->override_option('row_plugin', '');
-  $handler->override_option('path', 'drush_make_ui/generatecurrent');
-  $handler->override_option('menu', array(
-    'type' => 'none',
-    'title' => '',
-    'description' => '',
-    'weight' => 0,
-    'name' => 'navigation',
-  ));
-  $handler->override_option('tab_options', array(
-    'type' => 'none',
-    'title' => '',
-    'description' => '',
-    'weight' => 0,
-    'name' => 'navigation',
-  ));
-  $handler->override_option('displays', array(
+  $handler->display->display_options['pager']['type'] = 'none';
+  $handler->display->display_options['style_plugin'] = 'drush_make_ui_makefile';
+  $handler->display->display_options['style_options']['attach_text'] = 'Download makefile. The makefile is generated out of all current makefiles!';
+  $handler->display->display_options['style_options']['provide_file'] = 1;
+  $handler->display->display_options['style_options']['parent_sort'] = 0;
+  $handler->display->display_options['defaults']['fields'] = FALSE;
+  /* Field: Content: Core (field_core_version) */
+  $handler->display->display_options['fields']['field_core_version_value']['id'] = 'field_core_version_value';
+  $handler->display->display_options['fields']['field_core_version_value']['table'] = 'node_data_field_core_version';
+  $handler->display->display_options['fields']['field_core_version_value']['field'] = 'field_core_version_value';
+  $handler->display->display_options['fields']['field_core_version_value']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_core_version_value']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_core_version_value']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_core_version_value']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_core_version_value']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_core_version_value']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_core_version_value']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_core_version_value']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_core_version_value']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_core_version_value']['link_to_node'] = 0;
+  $handler->display->display_options['fields']['field_core_version_value']['label_type'] = 'none';
+  $handler->display->display_options['fields']['field_core_version_value']['format'] = 'core_api';
+  /* Field: Content: Drush make API (field_drush_make_api) */
+  $handler->display->display_options['fields']['field_drush_make_api_value']['id'] = 'field_drush_make_api_value';
+  $handler->display->display_options['fields']['field_drush_make_api_value']['table'] = 'node_data_field_drush_make_api';
+  $handler->display->display_options['fields']['field_drush_make_api_value']['field'] = 'field_drush_make_api_value';
+  $handler->display->display_options['fields']['field_drush_make_api_value']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_drush_make_api_value']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_drush_make_api_value']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_drush_make_api_value']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_drush_make_api_value']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_drush_make_api_value']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_drush_make_api_value']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_drush_make_api_value']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_drush_make_api_value']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_drush_make_api_value']['link_to_node'] = 0;
+  $handler->display->display_options['fields']['field_drush_make_api_value']['label_type'] = 'none';
+  $handler->display->display_options['fields']['field_drush_make_api_value']['format'] = 'drush_make_api';
+  /* Field: Content: Modules (field_module) */
+  $handler->display->display_options['fields']['field_module_title']['id'] = 'field_module_title';
+  $handler->display->display_options['fields']['field_module_title']['table'] = 'node_data_field_module';
+  $handler->display->display_options['fields']['field_module_title']['field'] = 'field_module_title';
+  $handler->display->display_options['fields']['field_module_title']['alter']['alter_text'] = 0;
+  $handler->display->display_options['fields']['field_module_title']['alter']['make_link'] = 0;
+  $handler->display->display_options['fields']['field_module_title']['alter']['word_boundary'] = 1;
+  $handler->display->display_options['fields']['field_module_title']['alter']['ellipsis'] = 1;
+  $handler->display->display_options['fields']['field_module_title']['alter']['strip_tags'] = 0;
+  $handler->display->display_options['fields']['field_module_title']['alter']['trim'] = 0;
+  $handler->display->display_options['fields']['field_module_title']['alter']['html'] = 0;
+  $handler->display->display_options['fields']['field_module_title']['hide_empty'] = 0;
+  $handler->display->display_options['fields']['field_module_title']['empty_zero'] = 0;
+  $handler->display->display_options['fields']['field_module_title']['link_to_node'] = 0;
+  $handler->display->display_options['fields']['field_module_title']['label_type'] = 'none';
+  $handler->display->display_options['fields']['field_module_title']['format'] = 'makefile';
+  $handler->display->display_options['fields']['field_module_title']['multiple']['group'] = 1;
+  $handler->display->display_options['fields']['field_module_title']['multiple']['multiple_number'] = '3';
+  $handler->display->display_options['fields']['field_module_title']['multiple']['multiple_reversed'] = 0;
+  $handler->display->display_options['path'] = 'drush_make_ui/generatecurrent';
+  $handler->display->display_options['displays'] = array(
     'page_1' => 'page_1',
     'default' => 0,
-  ));
-  $handler->override_option('sitename_title', FALSE);
+  );
 
   $views[$view->name] = $view;
 

@@ -223,10 +223,12 @@ The content of this file will plainly be tailed to the end of the generated make
       'default_value' => array(
         '0' => array(
           'server_key' => 'drupal_org',
+          'ptype' => 'module',
           'short_name' => '',
           'api_version' => '6.x',
           'module_release' => '',
-          'refresh' => 'Refresh',
+          'refresh' => 'Get releases',
+          'delete' => 'Delete',
         ),
       ),
       'default_value_php' => NULL,

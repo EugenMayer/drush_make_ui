@@ -35,6 +35,6 @@ function drush_make_ui_node_info() {
  */
 function drush_make_ui_views_api() {
   return array(
-    'api' => '2',
+    'api' => '3.0',
   );
 }
