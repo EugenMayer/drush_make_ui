@@ -36,6 +36,14 @@ class Drush_make_release_generic {
           $module = $match[1];
         }
         break;
+      case 'profile':
+      case 'installation_profile':
+        $type = 'projects';
+        if (preg_match('/(.*)_profile$/', $module, $match) > 0) {
+          $options['directory_name'] = $match[1];
+        }
+        break;
+
       default:
         $type = 'projects';
         break;
